@@ -2,13 +2,28 @@ const express = require("express");
 const app = express();
 const path = require("path");
 // finding path of file
-const pathDir = path.join(__dirname, "public");
-console.log(pathDir);
+// const pathDir = path.join(__dirname, "public");
+// console.log(pathDir);
 
-app.use(express.static(pathDir));
-// sending HTML file
+// app.use(express.static(pathDir));
+// // sending HTML file
+// app.get("/home", (req, res) => {
+//   res.sendFile(`${pathDir}/home.html`);
+// });
+
+// Template Engine
+app.set("view engine", "ejs");
+console.log(app.get("view engine"));
+// Rendering HTML file using ejs
+app.get("/", (req, res) => {
+  res.render("index", {
+    title: "index page",
+  });
+});
 app.get("/home", (req, res) => {
-  res.sendFile(`${pathDir}/home.html`);
+  res.render("home", {
+    title: "Home Page",
+  });
 });
 
 // --Get  API using Express
