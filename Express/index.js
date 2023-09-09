@@ -1,6 +1,14 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+// importing route
+// const router = express.Router();
+// app.use(router)
+
+// importing router from other file
+const router = require("./router");
+app.use(router);
+
 // finding path of file
 // const pathDir = path.join(__dirname, "public");
 // console.log(pathDir);
@@ -15,25 +23,25 @@ const path = require("path");
 app.set("view engine", "ejs");
 console.log(app.get("view engine"));
 // Rendering HTML file using ejs
-app.get("/", (req, res) => {
-  res.render("index", {
-    title: "index page",
-  });
-});
-app.get("/home", (req, res) => {
-  res.render("home", {
-    title: "Home Page",
-  });
-});
+// router.get("/", (req, res) => {
+//   res.render("index", {
+//     title: "index page",
+//   });
+// });
+// router.get("/home", (req, res) => {
+//   res.render("home", {
+//     title: "Home Page",
+//   });
+// });
 
 // --Get  API using Express
-app.get("/", (req, res) => {
-  res.send("This is the route  is created by using Express");
-});
+// app.get("/", (req, res) => {
+//   res.send("This is the route  is created by using Express");
+// });
 
-app.get("/about", (req, res) => {
-  res.send("This is about page");
-});
+// app.get("/about", (req, res) => {
+//   res.send("This is about page");
+// });
 
 // sending JSON file
 app.get("/json", (req, res) => {
