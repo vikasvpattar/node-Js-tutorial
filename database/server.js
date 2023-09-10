@@ -49,6 +49,18 @@ app.patch("/update/:id", async (req, res) => {
   }
 });
 
+// login system
+
+app.post("/login", async (req, res) => {
+  try {
+    const userEmail = req.body.email;
+    const getEmail = await user.findOne({ email: userEmail });
+    res.send(getEmail);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
 // Deleting the data
 
 app.delete("/delete/:id", async (req, res) => {
